@@ -40,4 +40,8 @@
         name: "nginx"
         state: present
 
+    - name: Installer cowsay 
+      apt:
+        name: "cowsay"
+        state: present
 
