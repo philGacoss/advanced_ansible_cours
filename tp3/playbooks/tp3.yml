@@ -1,7 +1,7 @@
 ---
 # Playbook pour installer des packages
-- name: Configuration d’un serveur web
-  hosts: servers
+- name: Configuration de deux serveuris web
+  hosts: serverAB
   become: true
   become_user: root
 
@@ -18,6 +18,26 @@
     - name: Installer le paquet mysql
       apt:
         name: "mysql-server"
+        state: present
+
+- name: Configuration serveurC
+  hosts: serverC
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Mettre à jour la liste des paquets
+      apt:
+        update_cache: yes
+
+    - name: Installer GIT
+      apt:
+        name: "git"
+        state: present
+
+    - name: Installer nginx 
+      apt:
+        name: "nginx"
         state: present
 
 
