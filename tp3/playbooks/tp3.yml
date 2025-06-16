@@ -1,0 +1,23 @@
+---
+# Playbook pour installer des packages
+- name: Configuration d’un serveur web
+  hosts: servers
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Mettre à jour la liste des paquets
+      apt:
+        update_cache: yes
+
+    - name: Installer le paquet web
+      apt:
+        name: "apache-2"
+        state: present
+
+    - name: Installer le paquet mysql
+      apt:
+        name: "mysql-server"
+        state: present
+
+
