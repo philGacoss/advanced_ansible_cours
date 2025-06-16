@@ -1,5 +1,5 @@
 ---
 roles:
   - name: geerlingguy.docker
-    version: x.x.x
+    version: 7.4.7
 
