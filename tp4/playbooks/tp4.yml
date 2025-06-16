@@ -4,14 +4,7 @@
   hosts: serverC
   become: true
   become_user: root
+  roles:
+    - geerlingguy.docker
 
-  tasks:
-    - name: Mettre à jour la liste des paquets
-      apt:
-        update_cache: yes
-
-    - name: Installer docker
-      apt:
-        name: "docker"
-        state: present
 
