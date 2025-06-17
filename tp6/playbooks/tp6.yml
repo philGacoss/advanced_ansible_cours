@@ -1,0 +1,42 @@
+---
+# Playbook pour installer des packages
+- name: Configuration du serveur wordpress
+  hosts: serverB
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Mettre à jour la liste des paquets
+      apt:
+        update_cache: yes
+
+    - name: Installer le paquet web
+      apt:
+        name: "apache-2"
+        state: present
+	
+	- name: Installer le paquet wordpress
+      apt:
+        name: "wordpress"
+        state: present
+
+ 
+
+- name: Configuration serveurC
+  hosts: serverC
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Mettre à jour la liste des paquets
+      apt:
+        update_cache: yes
+    
+	- name: Installer le paquet mysql
+      apt:
+        name: "mysql-server"
+        state: present		
+
+
+
+
