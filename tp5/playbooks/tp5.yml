@@ -1,0 +1,16 @@
+---
+# Playbook pour installer des packages
+- name: Configuration docker
+  hosts: servers
+  become: true
+  become_user: root
+  tasks:
+    - name: Include tp4 tasks
+      include_tasks: tp4/tp4.yml
+    - name: Include tp3 tasks
+      include_tasks: tp3/tp3.yml
+
+
+
+
+
