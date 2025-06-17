@@ -9,3 +9,26 @@
 
   roles:
     - geerlingguy.mysql
+  
+  wp_database:
+    name: "wordpress"
+    username: "wordpress"
+    password: "wordpress"
+
+  Tasks:
+    - name: "create wordpress database"
+      community.mysql.mysql_db:
+        db: "{{ wp_database.name }}"
+        state: "present"
+
+    - name: "create user for wordpress databse"
+      community.mysql.mysql.user:
+        name: "{{ wp_database.username }}"
+        password: "{{ wp_database.password }}"
+        priv: "{{ wp_database.name }}.*:ALL"
+        state: "present"
+      with_items: "{{ mysqldb.hosts }}"
+
+
+    
+
