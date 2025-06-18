@@ -1,0 +1,18 @@
+---
+- name: lecture CSV
+  hosts: serverA
+  become: true
+  become_user: root
+
+
+  tasks:
+  - name: test shell
+    shell: >
+      mawk -F,  '{print  $1,   $2}' temperature.csv
+    register: result
+
+  - debug:
+      msg: "{{ result.stdout }}"
+
+
+
