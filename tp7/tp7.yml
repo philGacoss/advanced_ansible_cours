@@ -15,4 +15,12 @@
       msg: "{{ result.stdout }}"
 
 
+  - name: test sort
+    shell: >
+      cat temperature.csv | sort -t,
+    register: result
+
+  - debug:
+      msg: "{{ result.stdout }}"      
+
 
